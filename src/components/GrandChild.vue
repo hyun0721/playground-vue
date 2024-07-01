@@ -6,24 +6,31 @@
     <section class="container">
       <div class="item">
         <span>1) Origin Data: </span>
-        <div>{{ props.originData.value }}</div>
+        <div>{{ myData }}</div>
       </div>
       <div class="item">
         <span>2) My Data: </span>
-        <input type="text" v-model="myData.value" />
+        <input type="text" v-model="myData" />
       </div>
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { inject, onMounted, ref } from 'vue'
+import { DRILLED_DATA, type DataType } from '@/symbol/key';
 
-const props = defineProps<{
-  originData: any
-}>()
+const { myData } = inject<DataType>(DRILLED_DATA, {
+  myData: ref("initial Value"),
+  updateOriginData: (newValue: any) => {
+    console.log('updateOriginData : ', newValue);
+  }
+});   // Get 'originData' : 반응성이 유지됨.
 
-const myData = reactive(props.originData)
+onMounted(() => {
+  console.log('GrandChild : ', myData.value);
+});
+
 </script>
 
 <style scoped>

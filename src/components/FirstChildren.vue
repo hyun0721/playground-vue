@@ -4,34 +4,33 @@
     <section class="container">
       <div class="item">
         <span>1) Origin Data : </span>
-        <div>{{ props.originData }}</div>
+        <div>{{ myData }}</div>
       </div>
       <div class="item">
         <span>2) My Data : </span>
-        <input type="text" v-model="myData.value" />
+        <input type="text" v-model="myData" />
+        <button @click="updateOriginData('clicked input...')">update</button>
       </div>
     </section>
     <div>
-      <GrandChild :originData="myData"></GrandChild>
-      <!-- <GrandChild :originData="originData.a"></GrandChild> -->
+      <GrandChild></GrandChild>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import GrandChild from '@/components/GrandChild.vue'
-import { reactive } from 'vue'
+import { inject, onMounted } from 'vue'
+import { DRILLED_DATA, type DataType } from '@/symbol/key';
 
-const props = defineProps<{
-  originData: any
-}>()
+// const myData:any = inject(DRILLED_DATA);   // Get 'originData' : 반응성이 유지됨.
+const { myData, updateOriginData } = inject<DataType>(DRILLED_DATA)!;   // Get 'originData' : 반응성이 유지됨.
 
-const myData = reactive({ value: props.originData })
-// const originData = toRef(props, 'originData')
+onMounted(() => {
+  console.log('Child : ', myData.value);
+  updateOriginData('test');
+});
 
-// watch(myData, (newVal, oldVal) => {
-//   console.log('myData : ', newVal.value, oldVal.value)
-// })
 </script>
 
 <style scoped>
