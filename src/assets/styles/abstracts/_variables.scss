@@ -1,0 +1,42 @@
+// 브레이크포인트
+$breakpoints: (
+  'mobile': 576px,
+  'tablet': 768px,
+  'desktop': 1024px,
+  'large': 1200px
+);
+
+// 레이아웃 크기
+$header-height: 60px;
+$sidebar-width: 260px;
+$sidebar-collapsed-width: 80px;
+$footer-height: 60px;
+
+// 색상
+$color-primary: #3b82f6;
+$color-secondary: #6b7280;
+$color-background: #f9fafb;
+$color-border: #e5e7eb;
+$color-text: #374151;
+
+// 타이포그래피
+$font-family-base: 'Noto Sans KR', sans-serif;
+$font-size-base: 16px;
+$line-height-base: 1.6;
+
+// 간격
+$spacing-unit: 8px;
+$spacing-xs: $spacing-unit;
+$spacing-sm: $spacing-unit * 2;
+$spacing-md: $spacing-unit * 3;
+$spacing-lg: $spacing-unit * 4;
+$spacing-xl: $spacing-unit * 5;
+
+// z-index
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070; 
