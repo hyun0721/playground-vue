@@ -4,7 +4,7 @@
     <section class="container">
       <div class="item">
         <span>1) Origin Data : </span>
-        <div>{{ props.originData }}</div>
+        <div>{{ props.originData.value }}</div>
       </div>
       <div class="item">
         <span>2) My Data : </span>
@@ -13,7 +13,6 @@
     </section>
     <div>
       <GrandChild :originData="myData"></GrandChild>
-      <!-- <GrandChild :originData="originData.a"></GrandChild> -->
     </div>
   </div>
 </template>
@@ -26,12 +25,7 @@ const props = defineProps<{
   originData: any
 }>()
 
-const myData = reactive({ value: props.originData })
-// const originData = toRef(props, 'originData')
-
-// watch(myData, (newVal, oldVal) => {
-//   console.log('myData : ', newVal.value, oldVal.value)
-// })
+const myData = reactive(props.originData)
 </script>
 
 <style scoped>
