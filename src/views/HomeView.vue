@@ -34,13 +34,22 @@
 
 <script setup lang="ts">
 import FirstChildren from '@/components/FirstChildren.vue'
+import { provide, readonly, ref } from 'vue'
+import { DRILLED_DATA } from '@/symbol/key';
 
-import { reactive, watch } from 'vue'
-const originData = reactive({ value: 'ttt' })
+const originData = ref('ttt');    // 반응형 객체
 
-watch(originData, (newVal, oldVal) => {
-  console.log('originData : ', newVal, oldVal)
-})
+// provide(myInput, originData);
+
+// provide(myInput, reaonly(originData));
+
+provide(DRILLED_DATA, {
+  myData: readonly(originData),   // 읽기 전용 속성으로 제공 (inject 컴포넌트에서 변경 불가능)
+  updateOriginData(newValue: any) {   // 업데이트 함수 제공
+    originData.value = newValue;
+  }
+});
+
 </script>
 
 <style scoped>
