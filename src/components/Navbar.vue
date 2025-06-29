@@ -2,15 +2,15 @@
   <nav class="navbar">
     <div class="container navbar-container">
       <div class="navbar-brand">
-        <RouterLink to="/" class="logo">My Website</RouterLink>
+        <RouterLink to="/" class="logo" @click="closeMenu">My Website</RouterLink>
       </div>
-      <button class="navbar-toggle" @click="toggleMenu">
+      <button class="navbar-toggle" @click="toggleMenu" ref="toggleButton">
         <span class="navbar-toggle-icon"></span>
       </button>
-      <div class="navbar-menu" :class="{ 'is-active': isMenuOpen }">
-        <RouterLink to="/" class="nav-item">홈</RouterLink>
-        <RouterLink to="/about" class="nav-item">소개</RouterLink>
-        <RouterLink to="/contact" class="nav-item">연락처</RouterLink>
+      <div class="navbar-menu" :class="{ 'is-active': isMenuOpen }" ref="menu">
+        <RouterLink to="/" class="nav-item" @click="closeMenu">홈</RouterLink>
+        <RouterLink to="/about" class="nav-item" @click="closeMenu">소개</RouterLink>
+        <RouterLink to="/contact" class="nav-item" @click="closeMenu">연락처</RouterLink>
       </div>
     </div>
   </nav>
@@ -18,13 +18,52 @@
 
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
+
+// HTMLElement 타입 확장
+declare module '@vue/runtime-core' {
+  interface HTMLElement {
+    _clickOutside?: (event: MouseEvent) => void
+  }
+}
 
 const isMenuOpen = ref(false)
+const menu = ref<HTMLElement | null>(null)
+const toggleButton = ref<HTMLElement | null>(null)
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
 }
+
+const closeMenu = () => {
+  isMenuOpen.value = false
+}
+
+// 외부 클릭 감지
+const handleClickOutside = (event: MouseEvent) => {
+  if (menu.value && !menu.value.contains(event.target as Node) && 
+      toggleButton.value && !toggleButton.value.contains(event.target as Node)) {
+    closeMenu()
+  }
+}
+
+// 포커스 변경 감지
+const handleFocusChange = (event: FocusEvent) => {
+  if (menu.value && !menu.value.contains(event.target as Node) && 
+      toggleButton.value && !toggleButton.value.contains(event.target as Node)) {
+    closeMenu()
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('click', handleClickOutside)
+  document.addEventListener('focusin', handleFocusChange)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('click', handleClickOutside)
+  document.removeEventListener('focusin', handleFocusChange)
+})
 </script>
 
 <style lang="scss" scoped>
