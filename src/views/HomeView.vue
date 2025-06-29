@@ -1,3 +1,19 @@
+<!--
+ * 컴포넌트 간 통신(반응형) 예제
+ *
+ * 1) props (ref, reactive)
+ * - ref : 양방향 바인딩이 가능하나, 자식 컴포넌트의 수정사항이 반영되지 않음.
+ * - reactive : 양방향 바인딩이 가능하며, 자식 컴포넌트의 수정사항이 반영됨.
+ *
+ * 2) provie, inject
+ *
+ * 3) toRef
+ *
+ * 4) EventBus
+ *
+ * 5) computed
+ */
+-->
 <template>
   <section>
     <h1># 컴포넌트 간 통신(반응형) 예제 실습</h1>
@@ -7,7 +23,7 @@
       <h2>Parents</h2>
       <div>
         <span>Input : </span>
-        <input type="text" v-model="originData" />
+        <input type="text" v-model="originData.value" />
       </div>
       <div>
         <FirstChildren :originData="originData"></FirstChildren>
