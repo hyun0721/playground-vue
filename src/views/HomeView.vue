@@ -23,7 +23,7 @@
       <h2>Parents</h2>
       <div>
         <span>Input : </span>
-        <input type="text" v-model="originData.value" />
+        <input type="text" v-model="originData" />
       </div>
       <div>
         <FirstChildren :originData="originData"></FirstChildren>
