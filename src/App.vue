@@ -23,8 +23,8 @@ import SidebarMenu from './components/SidebarMenu.vue'
 </script>
 
 <style lang="scss">
-@import './assets/styles/base/_reset.scss';
-@import './assets/styles/abstracts/_mixins.scss';
+@use './assets/styles/base/_reset.scss';
+@use './assets/styles/abstracts/_mixins.scss';
 
 // 그리드 레이아웃
 .app {
