@@ -18,6 +18,15 @@ html, body {
 
 body {
   background-color: $color-background;
+  color: #000;
+}
+
+h1 {
+  color: $color-text;
+}
+
+div {
+  color: $color-text;
 }
 
 a {
