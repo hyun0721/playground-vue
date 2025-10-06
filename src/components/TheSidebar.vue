@@ -9,15 +9,15 @@
     </div>
 
     <nav class="nav">
-      <router-link to="/" class="nav-item">
+      <router-link to="/main/dashboard" class="nav-item">
         <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
         <span class="nav-text" v-show="uiStore.isSidebarExpanded">Dashboard</span>
       </router-link>
-      <router-link to="/analytics" class="nav-item">
+      <router-link to="/main/analytics" class="nav-item">
         <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>
         <span class="nav-text" v-show="uiStore.isSidebarExpanded">Analytics</span>
       </router-link>
-      <router-link to="/settings" class="nav-item">
+      <router-link to="/main/settings" class="nav-item">
         <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-4.44l-3.45 3.45-1.11 6.32 4.44 4.44 6.32-1.11L22 7.78l-3.45-3.45L12.22 2z"></path><circle cx="12" cy="12" r="3"></circle></svg>
         <span class="nav-text" v-show="uiStore.isSidebarExpanded">Settings</span>
       </router-link>
