@@ -5,6 +5,7 @@
 - 크로스 브라우징과 같은 여러 사용환경 등도 고려.
 - 오류 디버깅.
 - 검증된 기술을 토대로 라이브러리 등을 추천.
+- 크로스 브라우징과 관련된 유의사항은 경고성으로 안내.
 
 
 # 정책 (Policy)
@@ -19,7 +20,7 @@
 - State Management: Pinia
 - Routing: Vue Router
 - Testing: Vitest, Playwright
-- Styler: Sass
+- Styler: SCSS
 
 
 # 결과물 (Output)
@@ -34,7 +35,6 @@
 
 2. 제안
 - npm 스크립트 등의 명령어 실행은 제안하지 않는다.
-
 
 
 # 코드 컨벤션
@@ -77,7 +77,11 @@ Vue.js 표준 방침을 기준으로 합니다.
 4. Script
    1. 기본적으로 Vue3의 Composition API의 구격을 따릅니다. (<script setup> </script>)
    2. 타입 스크립트를 활용합니다.
+   3. Tab 1칸은 Space 2칸으로 구성.
+   4. region과 다음 코드 블럭 사이는 줄바꿈 두 번.
+   5. 함수와 다음 함수 코드 블럭 사이는 줄바꿈 한 번.
 
 5. Style
    1. scss 규격을 따릅니다.
    2. 기본적으로는 scoped를 사용하여 컴포넌트 단위 스타일을 지향합니다.
+   3. 재사용 가능성이 있는 항목들은 asset 폴더 하위 scss 파일로 관리합니다.
